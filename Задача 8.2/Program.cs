@@ -13,10 +13,23 @@ namespace Задача_8._2
         {
             string path = "Logs2/Log.txt";
             StreamWriter sw = new StreamWriter(path);
+            int[] chisla = new int[10];
             Random random = new Random();
-            sw.WriteLine(random.Next(0, 10));
+            foreach (int a in chisla)
+            {
+                sw.WriteLine("{0} ", random.Next(0, 10));
+            }
             sw.Close();
+
+            int[] sum = File.ReadAllLines(path).Select(int.Parse).ToArray();
+            int sum1 = sum.Sum();
+
+            Console.WriteLine(File.ReadAllText(path));
+            Console.WriteLine(sum1);
             
+            Console.ReadKey();
+
+
             if (!File.Exists(path))
             {
                 File.Create(path);
